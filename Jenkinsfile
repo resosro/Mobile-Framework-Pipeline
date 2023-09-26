@@ -18,15 +18,14 @@ pipeline{
     }
 
     options{
-        timeout(time: 120, unti:'seconds')
-        timestamps()
+        timeout(time: 120, until:'seconds')
 
     }
 
     stages{
 
         stage("initialization"){
-            parameters{
+            steps{
                 echo "initializing the jenkins file"
             }
             
