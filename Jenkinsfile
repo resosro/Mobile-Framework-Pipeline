@@ -13,7 +13,7 @@ Reporting
 pipeline{
     // Does agent {label 'Selenium'} work here? or does it have to be 
     // node {label 'Selenium '}
-    agent {label 'RAppsDesktop10'}
+    agent {label 'RAppsDesktop11'}
 
     parameters{
         choice(name: "mobile_app", choices: ['Earth Mobile', "ArcGIS Mobile"], description: 'Select which mobile app to run')
@@ -35,9 +35,9 @@ pipeline{
             steps{
                 powershell """Appium"""
                 // Assuming that Android Studio is already installed along with all of the apps on the emulator
-                powershell "Invoke-Item 'C:\Program Files\Android\Android Studio\bin\studio64.exe'"
+                powershell "Invoke-Item 'C:/Program Files/Android/Android Studio/bin/studio64.exe'"
 
-                powershell "C:\Python372\python.exe framework-main.py"
+                powershell "C:/Python372/python.exe framework-main.py"
 
 
                 
