@@ -20,9 +20,10 @@ pipeline{
 
     stages{
 
-        stage("build"){
+        stage("start-up-AS"){
             steps{
                 // start 
+                
                 echo "initializing the jenkins file ${params.mobile_app}"
                 
             }
