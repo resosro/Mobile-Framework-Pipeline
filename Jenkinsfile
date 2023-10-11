@@ -34,13 +34,10 @@ pipeline{
         stage("Build"){
             steps{
                 powershell """Appium"""
-                timeout(time: 10, unit: 'SECONDS')
                 // Assuming that Android Studio is already installed along with all of the apps on the emulator
                 powershell "Invoke-Item 'C:\Program Files\Android\Android Studio\bin\studio64.exe'"
-                timeout(time: 10, unit: 'SECONDS')
 
                 powershell "C:\Python372\python.exe framework-main.py"
-                timeout(time: 10, unit: 'SECONDS')
 
 
                 
