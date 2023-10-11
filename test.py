@@ -1,3 +1,4 @@
+import time
 import unittest
 import os
 from appium import webdriver
@@ -34,6 +35,20 @@ class TestAppium(unittest.TestCase):
         click_app = self.driver.find_element(by=app.XPATH, value="//android.widget.TextView["
                                                                  "@content-desc='ArcGIS Earth']")
         click_app.click()
+
+    def test_allow_permissions(self):
+        time.sleep(10)
+        allow_gallery = self.driver.find_element(by=app.ID, value="com.android.permissioncontroller:id/permission_allow_button")
+        allow_gallery.click()
+        time.sleep(2)
+        allow_photo = self.driver.find_element(by=app.ID, value="com.android.permissioncontroller:id/permission_allow_foreground_only_button")
+        allow_photo.click()
+        time.sleep(2)
+        allow_loc = self.driver.find_element(by=app.ID, value="com.android.permissioncontroller:id/permission_allow_foreground_only_button")
+        allow_loc.click()
+        time.sleep(2)
+
+
 
 
     # def test_find_battery(self) -> None:

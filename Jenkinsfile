@@ -3,11 +3,11 @@ Steps:
 Pull from SCM 
 
 Start Appium via CLI
-
-Android studio start
-    Windows application driver has to be starte 
+Start Android Studio using WIndows Application Driver
+    Windows application driver has to be started to start emulator 
     One file? 
-Run Python Script 
+Run Python Script in Jenkins Test stage
+Reporting 
 
 */
 pipeline{
@@ -26,18 +26,23 @@ pipeline{
     }
 
     options{
-        timeout(time: 1, unit: 'SECONDS')
+        timeout(time: 10, unit: 'SECONDS')
     }
 
     stages{
 
         stage("Build"){
             steps{
-                // start
-                //Appium 
-                //Appium must be installed into i t
-                powershell "Appium"
-                
+                powershell """Appium"""
+                timeout(time: 10, unit: 'SECONDS')
+                // Assuming that Android Studio is already installed along with all of the apps on the emulator
+                powershell "Invoke-Item 'C:\Program Files\Android\Android Studio\bin\studio64.exe'"
+                timeout(time: 10, unit: 'SECONDS')
+
+                powershell "C:\Python372\python.exe framework-main.py"
+                timeout(time: 10, unit: 'SECONDS')
+
+
                 
 
                 
@@ -48,6 +53,7 @@ pipeline{
             
         }
 
+        // Seperate into seperate repos then test seperate application depending on the choice in jenkins
         stage("test"){
             steps{
                 echo "deploying application"
