@@ -1,4 +1,15 @@
+/* 
+Steps:
+Pull from SCM 
 
+Start Appium via CLI
+
+Android studio start
+    Windows application driver has to be starte 
+    One file? 
+Run Python Script 
+
+*/
 pipeline{
     // Does agent {label 'Selenium'} work here? or does it have to be 
     // node {label 'Selenium '}
@@ -20,9 +31,16 @@ pipeline{
 
     stages{
 
-        stage("start-up-AS"){
+        stage("Build"){
             steps{
-                // start 
+                // start
+                //Appium 
+                //Appium must be installed into i t
+                powershell "Appium"
+                
+                
+
+                
                 
                 echo "initializing the jenkins file ${params.mobile_app}"
                 
