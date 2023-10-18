@@ -18,6 +18,12 @@ pipeline{
     parameters{
         choice(name: "mobile_app", choices: ['Earth Mobile', "ArcGIS Mobile"], description: 'Select which mobile app to run')
         choice(name: "phone_version", choices: ["Pixel 4"], description: "Select which one to be used")
+        choice(name: "android_os", choices: ["11.0"], description: "Select the Android OS")
+        choice(name: "portal_os", choices: ["Lnx","Windows"], description: "Select the portal OS")
+        choice(name: "portal_version", choices: ["11.2"], description: "Select the portal version")
+        choice(name: "security_type", choices: ["BI"], description: "Select the security type")
+
+
         // choice("phone_version", choices: ['Pixel 4'],defaultValue: 'Pixel 4', description: 'Select which phone version')
         // choice("android_os ", choices: ['11.0'],defaultValue: '11.0', description: 'Select which version of Android the test will take place on')
         // choice("portal_os", choices: ['Windows','Linux'],defaultValue: 'Windows', description: 'Portal Operating System')
@@ -33,18 +39,21 @@ pipeline{
 
         stage("Build"){
             steps{
-                powershell "appium"
+                bat cmd.exe
+                bat 'appium'
                 // Assuming that Android Studio is already installed along with all of the apps on the emulator
-                powershell "Invoke-Item 'C:/Program Files/Android/Android Studio/bin/studio64.exe'"
+                // powershell "Invoke-Item 'C:/Program Files/Android/Android Studio/bin/studio64.exe'"
 
-                powershell "C:/Python372/python.exe framework-main.py"
+
+                // powershell "C:/Python372/python.exe framework-main.py"
+                // git 
 
 
                 
 
                 
                 
-                echo "initializing the jenkins file ${params.mobile_app}"
+                // echo "initializing the jenkins file ${params.mobile_app}"
                 
             }
             
