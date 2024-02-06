@@ -2,10 +2,9 @@
 # Does this have access to the envs?
 
 function Run{
-    Set-Location ".\ArcGIS-Earth-Mobile"; python script.py
+    Set-Location ".\dir2\ArcGIS-Earth-Mobile"
+    python script.py
 }
-
-
 
 
 Run
